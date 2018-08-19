@@ -1,0 +1,24 @@
+#container{
+	height:300px;
+	width:400px;
+	display: grid;
+	text-align: right;
+	margin: 0 auto;
+	margin-top: 100px;
+}
+
+#display{
+	background-color: yellow;
+	border-style: solid;
+	border-color: black;
+	grid-row-start:1;
+	grid-row-end: 2;
+	grid-column-start:1;
+	grid-column-end:5;
+}
+div{
+	background-color:grey;
+	border-style: solid;
+	border-color: black;
+	text-align: center;
+}
