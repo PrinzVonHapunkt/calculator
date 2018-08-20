@@ -1,3 +1,6 @@
+
+
+
 function calculator()
 {
 	setUpButtons();
@@ -25,12 +28,52 @@ function setUpButtons()
 	let one = document.getElementById("1"); one.addEventListener('click',function(){updateDisplay("1")});
 	let two = document.getElementById("2"); two.addEventListener('click',function(){updateDisplay("2")});
 	let three = document.getElementById("3"); three.addEventListener('click',function(){updateDisplay("3")});
-	let equals = document.getElementById("equals"); //equals.addEventListener('click',function(){updateDisplay("ac")});
+	let equals = document.getElementById("equals"); equals.addEventListener('click',function(){calculate()});
 
 	
 	
 }
+function calculate()
+{
+	let tokens = readDisplay();
+	var result = 7357;
+	
+	
 
+
+
+
+
+	clearDisplay();
+	updateDisplay(result);
+}
+
+function readDisplay()
+{
+	let tok = [];
+	let tempnum = "";
+	let disp = document.getElementById("display").textContent;
+	for(let i = 0; i<disp.length; i++)
+	{
+		switch(disp[i])
+		{
+			case("0"):case("1"):case("2"):case("3"):case("4"):case("5"):case("6"):case("7"):case("8"):case("9"):
+			tempnum+=disp[i];
+			break;
+
+			case("+"):case("-"):case("*"):case("/"):
+			tok.push(Number(tempnum));
+			tempnum = "";
+			tok.push(disp[i]);
+			break;
+
+
+		}
+
+	}
+	tok.push(Number(tempnum));
+	return tok;
+}
 
 function updateDisplay(valtoadd)
 {	
@@ -82,7 +125,17 @@ function operate(char, num1,num2)
 
 }
 
-
+function contains(str, char)
+{
+	for(let i = 0; i<str.length; i++)
+	{
+		if(str[i]==char)
+		{
+			return true;
+		}
+	}
+	return false;
+}
 
 
 
@@ -105,10 +158,13 @@ function multiply (num1, num2)
 
 function divide (num1, num2)
 {
+	if(num2===0)
+	{
+		return "division by zero";
+	}
 	return num1/num2;
 }
 
 
 
-
-setUpButtons();
+calculator();
